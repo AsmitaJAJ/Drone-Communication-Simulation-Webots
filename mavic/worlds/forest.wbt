@@ -1,0 +1,50 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/dji/mavic/protos/Mavic2Pro.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/nex/protos/FireBird6.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/humans/pedestrian/protos/Pedestrian.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/trees/protos/Forest.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.21495001106705594 -0.4742917767660484 0.8537234934300316 5.307149212032209
+  position -3.49203009169513 10.730046619648604 3.134552140937407
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation -2.48 5.12 0.21
+  floorSize 10 10
+  floorTileSize 10 10
+}
+Forest {
+}
+Pedestrian {
+  translation 0 -2.19 1.56
+  pantsColor 0.36 0.22 0.5
+}
+Mavic2Pro {
+  hidden position_0_0 -6.371993079464858e-09
+  hidden position_5_0 -2.36442387771043e-06
+  hidden rotation_6 0 -1 0 2.3643593156695195e-06
+  hidden position_6_0 -4.318644878247184e-07
+  hidden rotation_7 -0.9999999999999999 0 0 4.318766816314896e-07
+  translation -1.62098 7.11027 0.302465
+  rotation -0.022847742434145307 -0.7562582462407033 -0.653874181825983 0.09268070865118948
+  controller "my_controller"
+}
+FireBird6 {
+  hidden position_0_0 1.6429730609502522e-05
+  hidden position_0_1 1.6429730501181753e-05
+  hidden rotation_22 0.35634988489977276 -0.3563418849332261 -0.8637333040783792 1.716774145186555
+  hidden rotation_23 0.5773484404700444 -0.5773444405270058 -0.5773579264887302 2.0943955140989767
+  translation -0.0008273530928299568 -4.1528903941475936e-10 0.3348487137518296
+  rotation 5.04939405710925e-07 -0.9999999999998723 -1.0159891706702754e-08 0.0065832072249388
+  controller "buildingcontrol"
+}
