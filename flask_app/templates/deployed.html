@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deployed</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    
+    body{
+      margin: 0;
+      padding: 0;
+     background-image:url("{{ url_for('static', filename='images/Background.jpg') }}");
+
+     background-size:cover;
+    }
+    
+    .topbar{
+      width:100%;
+      height:75px;
+      background-color: rgb(120, 145, 208);
+      display: flex;
+      align-items:center;
+    }
+
+    #menu{
+      color: white;
+      margin-left:40px;
+      padding: 0;
+    }
+
+    .sidebar{
+    position: fixed;
+    top: 0; 
+    left: 0;
+    height: 100%;
+    width: 400px;
+    position: fixed;
+    top: 0; 
+    left: 0;
+    height: 100vh;
+    width:400px;
+    backdrop-filter: blur(12px);
+    box-shadow:(-10px 0 10px rgba(0, 0, 0, 0.1));
+    list-style:none;
+    display:none;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:flex-start;
+  }
+  .sidebar li{
+    font-size:20px;
+    color: white;
+    list-style-type: none;
+    padding: 30px;
+    margin:10px;
+    width: 100%;
+    height: 10%;
+  }
+  .sidebar a{
+    font-size:20px;
+    color: white;
+    list-style-type: none;
+    padding: 30px;
+    margin:10px;
+    width: 100%;
+    height: 10%;
+  } 
+  .sidebar li:hover{
+  background-color: #68a9e7;
+  color: black;
+}
+.sidebar a:hover{
+  background-color: #68a9e7;
+  color: black;
+}
+</style>
+</head>
+
+
+<body>
+  <div class="topbar">
+    <i id="menu" class="fa-solid fa-bars fa-2x" onclick="openSidebar()"></i>
+    <img src="{{ url_for('static', filename='images/Drone.jpg.png') }}" 
+     style="color:aliceblue;height: 50px; width:150px;margin-top:10px; margin-left:600px;">
+
+  </div>
+  <nav>
+  <div class="sidebar">
+    <ul>
+      <i class="fa-solid fa-xmark fa-2x" onclick="closeSidebar()" style="color: white;"></i>
+      <li><a href="home">Home</a></li>
+      <li><a href="about">About</a></li>
+      <li><a href="logs">Logs</a></li>
+      <li><a href="contact">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+    function openSidebar(){
+      const sidebar=document.querySelector('.sidebar')
+      sidebar.style.display='flex';
+    }
+    function closeSidebar(){
+      const sidebar=document.querySelector('.sidebar')
+      sidebar.style.display='none'
+    }
+  </script>
+</body>
+</html>
