@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    
+    body{
+      margin: 0;
+      padding: 0;
+      background-image:url("{{ url_for('static', filename='images/Background.jpg') }}");
+     background-size:cover;
+     margin: auto;
+    align-items:center;
+    }
+    .topbar{
+      width:100%;
+      height:75px;
+      background-color: green;
+      display: flex;
+      align-items:center;
+    }
+
+    #menu{
+      color: white;
+      margin-left:40px;
+      padding: 0;
+    }
+
+    .sidebar{
+    position: fixed;
+    top: 0; 
+    left: 0;
+    height: 100%;
+    width: 400px;
+    position: fixed;
+    top: 0; 
+    left: 0;
+    height: 100vh;
+    width:400px;
+    backdrop-filter: blur(12px);
+    box-shadow:(-10px 0 10px rgba(0, 0, 0, 0.1));
+    list-style:none;
+    display:none;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:flex-start;
+  }
+  .sidebar li{
+    font-size:20px;
+    color: white;
+    list-style-type: none;
+    padding: 30px;
+    margin:10px;
+    width: 100%;
+    height: 10%;
+  }
+  .sidebar a{
+    font-size:20px;
+    color: white;
+    list-style-type: none;
+    padding: 30px;
+    margin:10px;
+    width: 100%;
+    height: 10%;
+  } 
+  .sidebar li:hover{
+  background-color: #68a9e7;
+  color: black;
+}
+.sidebar a:hover{
+  background-color: #68a9e7;
+  color: black;
+}
+
+.deploy{
+    width: 500px;
+    height: 10px;
+    background-color: rgb(3, 26, 81);
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+button{
+  font-size:25px;
+  background-color: red;
+  color: white;
+  height: 100px;
+  width: 100%;
+  position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.bgbox {
+  background-color: rgba(0, 0, 0, 0.7); /* Black with 70% transparency */
+  color: white; /* White text for readability */
+  padding: 15px;
+  margin: 50px; 
+  border-radius: 10px; /* Rounded corners */
+  list-style-type: none; /* Remove bullet points */
+  height:auto;
+  width:600px;
+  font-size:15px;
+ 
+    margin-left:400px;
+    
+    align-items:center;
+}
+</style>
+</head>
+
+
+<body>
+  <div class="topbar">
+    <i id="menu" class="fa-solid fa-bars fa-2x" onclick="openSidebar()"></i>
+    <img src="{{ url_for('static', filename='images/Drone.jpg.png') }}" 
+    style="color:aliceblue;height: 50px; width:150px;margin-top:10px; margin-left:600px;">
+
+  </div>
+  <nav>
+  <div class="sidebar">
+    <ul>
+      <i class="fa-solid fa-xmark fa-2x" onclick="closeSidebar()" style="color: white;"></i>
+      <li><a href="home">Home</a></li>
+      <li><a href="about">About</a></li>
+      <li><a href="logs">Logs</a></li>
+      
+    </ul>
+  </div>
+</nav>
+<script>
+    function openSidebar(){
+      const sidebar=document.querySelector('.sidebar')
+      sidebar.style.display='flex';
+    }
+    function closeSidebar(){
+      const sidebar=document.querySelector('.sidebar')
+      sidebar.style.display='none'
+    }
+  </script>
+
+  <div class="bgbox">
+    <h1>ABOUT</h1>
+    <p>
+      Search and Rescue (SAR) drones are essential tools in modern rescue operations, designed to locate missing persons or survivors in difficult-to-reach areas. Equipped with advanced technologies such as high-resolution cameras, thermal imaging sensors, and GPS systems, these drones provide real-time visuals and data to ground teams, allowing for more efficient and accurate searches.
+<br><br>
+      In large-scale operations, SAR drones can quickly cover vast areas that would take humans much longer to search, including mountainous terrain, forests, disaster zones, and bodies of water. Their thermal sensors are particularly useful in detecting heat signatures, enabling them to locate people even in low visibility conditions like darkness, heavy smoke, or dense foliage. This capability is invaluable for nighttime or post-disaster searches where visibility is a major challenge.
+      <br><br>
+      SAR drones are also capable of navigating through hazardous environments where human rescuers might face safety risks. For example, in the aftermath of earthquakes, floods, or avalanches, drones can quickly assess damage, identify potential survivors, and relay critical information to emergency responders without putting rescuers in danger. Some SAR drones are even equipped with loudspeakers or can carry lightweight supplies like medical kits, allowing them to communicate with and aid survivors before human rescuers arrive.
+      <br><br>
+      Overall, SAR drones greatly enhance the speed, safety, and success of search and rescue missions, helping to save lives by quickly pinpointing the locations of those in need of assistance. Their versatility and efficiency make them an indispensable asset in both urban and remote rescue scenarios.
+
+        <br><br>
+      This project aims to simulate a scenario where a UAV is being used in a rescue operation to detect a person in danger and communicates its position back to its base station. We have also simulated the data loss and corruption that occurs due to dense vegetation and other such obstacles. We have implemented a simple Long Range(LoRa) communication protocol using python as it is an ideal protocol to be used for low power data transmission, high penetration and long range of data communication. This approach aims to explore potential solutions to the challenges associated with using drones in rescue operations.
+    </p>
+  </div>
+</body>
+</html>

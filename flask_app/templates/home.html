@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    
+    body{
+      margin: 0;
+      padding: 0;
+      background-image:url("{{ url_for('static', filename='images/Background.jpg') }}");
+     background-size:cover;
+    }
+    
+    .topbar{
+      width:100%;
+      height:75px;
+      background-color: green;
+      display: flex;
+      align-items:center;
+    }
+
+    #menu{
+      color: white;
+      margin-left:40px;
+      padding: 0;
+    }
+
+    .sidebar{
+    position: fixed;
+    top: 0; 
+    left: 0;
+    height: 100%;
+    width: 400px;
+    position: fixed;
+    top: 0; 
+    left: 0;
+    height: 100vh;
+    width:400px;
+    backdrop-filter: blur(12px);
+    box-shadow:(-10px 0 10px rgba(0, 0, 0, 0.1));
+    list-style:none;
+    display:none;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:flex-start;
+  }
+  .sidebar li{
+    font-size:20px;
+    color: white;
+    list-style-type: none;
+    padding: 30px;
+    margin:10px;
+    width: 100%;
+    height: 10%;
+  }
+  .sidebar a{
+    font-size:20px;
+    color: white;
+    list-style-type: none;
+    padding: 30px;
+    margin:10px;
+    width: 100%;
+    height: 10%;
+  } 
+  .sidebar li:hover{
+  background-color: #68a9e7;
+  color: black;
+}
+.sidebar a:hover{
+  background-color: #68a9e7;
+  color: black;
+}
+
+.deploy{
+    width: 500px;
+    height: 10px;
+    background-color: rgb(3, 26, 81);
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    align-items:center;
+}
+
+button {
+  font-size:25px;
+  background-color: red;
+  color: white;
+  height: 100px;
+  width:450px;
+  position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+      align-items:center;
+      border-radius:50px;
+}
+button a{
+  color: white;
+} 
+button:hover{
+  font-size:25px;
+  background-color: rgb(139,0,0);
+  color: white;
+  height: 100px;
+  width:450px;
+  position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+      align-items:center;
+      border-radius:50px;
+}
+#sosButton {
+  display: none; /* Initially hidden */
+  width: 80px; /* Width of the button */
+  height: 80px; /* Height of the button */
+  background-color: red; /* Button color */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 50%; /* Circular shape */
+  position: absolute; /* Position relative to parent */
+  top: calc(50% - 120px); /* Place it above the DEPLOY button */
+  left: 50%; /* Center it horizontally */
+  transform: translateX(-50%); /* Center it horizontally */
+  font-size: 24px; /* Font size for the emoji */
+  text-align: center; /* Center the emoji */
+  line-height: 80px; /* Center vertically */
+  cursor: pointer; /* Change cursor on hover */
+  animation: flash 1s infinite; 
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+</style>
+</head>
+
+
+<body>
+  <div class="topbar">
+    <i id="menu" class="fa-solid fa-bars fa-2x" onclick="openSidebar()"></i>
+    <img src="{{ url_for('static', filename='images/Drone.jpg.png') }}" 
+    style="color:aliceblue;height: 50px; width:150px;margin-top:10px; margin-left:600px;">
+
+  </div>
+  <nav>
+  <div class="sidebar">
+    <ul>
+      <i class="fa-solid fa-xmark fa-2x" onclick="closeSidebar()" style="color: white;"></i>
+      <li><a href="home">Home</a></li>
+      <li><a href="about">About</a></li>
+      <li><a href="logs">Logs</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+<div>
+  
+  <button onclick="startSimulation()">DEPLOY</button>
+</div> 
+<button id="sosButton" class="sos-button">🚨</button>
+<script>
+  // Check the SOS message count
+  const sosCount = {{ sos_count }};
+
+  // Show the SOS button if there are messages
+  if (sosCount > 0) {
+      const sosButton = document.getElementById('sosButton');
+      sosButton.style.display = 'block'; // Show the button
+  }
+
+  // Optionally, you can add an event listener for the button
+  document.getElementById('sosButton').addEventListener('click', () => {
+      alert('SOS Button Clicked!');
+      // You can add more functionality here, like redirecting or alerting
+  });
+</script>
+<script>
+    function openSidebar(){
+      const sidebar=document.querySelector('.sidebar')
+      sidebar.style.display='flex';
+    }
+    function closeSidebar(){
+      const sidebar=document.querySelector('.sidebar')
+      sidebar.style.display='none'
+    }
+
+    function startSimulation() {
+      fetch('/start-simulation', {
+        method: 'POST',
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert("Simulation started: " + data.message);
+      })
+      .catch((error) => {
+        console.error("Error starting simulation:", error);
+      });
+    }
+  </script>
+</body>
+</html>
